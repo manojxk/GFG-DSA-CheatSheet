@@ -16,7 +16,7 @@ vector<int> singleNumber(vector<int> nums)
     int xorr = 0;
     for (int val : nums)
         xorr = xorr ^ val;
-    int bits = 1 << PositionRightmostSetbit(xorr); 
+    int bits = 1 << PositionRightmostSetbit(xorr);
     int x = 0;
     int y = 0;
     for (int val : nums)

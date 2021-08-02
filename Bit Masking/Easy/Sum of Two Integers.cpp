@@ -1,20 +1,16 @@
 // https://leetcode.com/problems/sum-of-two-integers/
 //Iterative
-class Solution
+
+int getSum(int a, int b)
 {
-public:
-    int getSum(int a, int b)
+    while (b != 0)
     {
-        unsigned int c;
-        while (b != 0)
-        {
-            c = (a & b);
-            a = a ^ b;
-            b = c << 1;
-        }
-        return a;
+        a = a ^ b;
+        b = (a & b) << 1;
     }
-};
+    return a;
+}
+
 //Recursive
 int getSum(int a, int b)
 {
