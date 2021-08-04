@@ -1,17 +1,16 @@
-
-void buildBST(vector<int> &nums, int start, int end, vector<int> &ans)
+TreeNode *to_BST(vector<int> &nums, int l, int h)
 {
-    if (start > end)
-        return;
-    int mid = (start + end) / 2;
-    ans.push_back(nums[mid]);
-    buildBST(nums, start, mid - 1, ans);
-    buildBST(nums, mid + 1, end, ans);
+    if (l > h)
+        return nullptr;
+    int m = (l + h) / 2;
+    TreeNode *root = new TreeNode(nums[m]);
+    root->left = to_BST(nums, l, m - 1);
+    root->right = to_BST(nums, m + 1, h);
+    return root;
 }
-vector<int> sortedArrayToBST(vector<int> &nums)
+TreeNode *sortedArrayToBST(vector<int> &nums)
 {
-    // Code here
-    vector<int> ans;
-    buildBST(nums, 0, nums.size() - 1, ans);
-    return ans;
+    int l = 0;
+    int h = nums.size() - 1;
+    return to_BST(nums, l, h);
 }

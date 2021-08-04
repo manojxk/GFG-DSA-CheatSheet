@@ -2,7 +2,7 @@
 ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
 {
     ListNode *dummy_head = new ListNode();
-    ListNode *temp = dummy_head;
+    ListNode *curr = dummy_head;
     int carry = 0;
     while (l1 or l2 or carry)
     {
@@ -20,8 +20,8 @@ ListNode *addTwoNumbers(ListNode *l1, ListNode *l2)
         sum += carry;
         carry = sum / 10;
         ListNode *new_node = new ListNode(sum % 10);
-        temp->next = new_node;
-        temp = temp->next;
+        curr->next = new_node;
+        curr = curr->next;
     }
     return dummy_head->next;
 }
