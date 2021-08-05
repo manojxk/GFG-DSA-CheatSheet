@@ -1,17 +1,13 @@
+// https://practice.geeksforgeeks.org/problems/triplets-with-sum-with-given-range/1/#:~:text=Given%20an%20array%20Arr%5B%5D,range%20%5B7%2C%2011%5D.
+
 #include <bits/stdc++.h>
 using namespace std;
 
 int countTripletsLessThan(int arr[], int n, int val)
 {
-    // sort the input array.
     sort(arr, arr + n);
-
-    // Initialize result
     int ans = 0;
-
     int j, k;
-
-    // to store sum
     int sum;
 
     // Fix the first element
@@ -48,14 +44,10 @@ int countTripletsLessThan(int arr[], int n, int val)
     return ans;
 }
 
-// Function to return count of triplets having
-// sum in range [a, b].
 int countTriplets(int arr[], int n, int a, int b)
 {
 
-    // to store count of triplets.
     int res;
-
     // Find count of triplets having sum less
     // than or equal to b and subtract count
     // of triplets having sum less than or
