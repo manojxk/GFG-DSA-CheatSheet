@@ -1,35 +1,23 @@
+#include <bits/stdc++.h>
+using namespace std;
+
 int longestKSubstr(string s, int k)
 {
     if (k > s.size())
-    {
         return -1;
-    }
-    unordered_map<char, int> temp;
-    for (auto it : s)
-    {
-        temp[it]++;
-    }
-    if (k > temp.size())
-    {
+    unordered_set<char> uset(s.begin(), s.end());
+    if (uset.size() < k)
         return -1;
-    }
+    int i = 0, j = 0, ans = 0;
     unordered_map<char, int> mp;
-    int mx = INT_MIN;
-    int i = 0, j = 0;
-    int n = s.size();
-    while (j < n)
+    while (j < s.size())
     {
         mp[s[j]]++;
-        if (mp.size() < k)
+        if (mp.size() == k)
         {
-            j++;
+            ans = max(ans, j - i + 1);
         }
-        else if (mp.size() == k)
-        {
-            mx = max(mx, j - i + 1);
-            j++;
-        }
-        else if (mp.size() > k)
+        if (mp.size() > k)
         {
             while (mp.size() > k)
             {
@@ -40,8 +28,8 @@ int longestKSubstr(string s, int k)
                 }
                 i++;
             }
-            j++;
         }
+        j++;
     }
-    return mx;
+    return ans;
 }

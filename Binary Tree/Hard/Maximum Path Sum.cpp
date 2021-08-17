@@ -8,16 +8,13 @@ int maxPathSumUtil(Node *root, int &ans)
     if (root == nullptr)
         return 0;
 
-    int left = maxPathSumUtil(root->left, res);
-    int right = maxPathSumUtil(root->right, res);
+    int left = maxPathSumUtil(root->left, ans);
+    int right = maxPathSumUtil(root->right, ans);
 
     int nodeMax = max({root->data, root->data + left + right, root->data + left, root->data + right});
 
     int ans = max(ans, nodeMax);
     int singlePathsum = max({root->data, root->data + left, root->data + right});
-
-    res = max(res, max_top);
-
     return singlePathsum;
 }
 

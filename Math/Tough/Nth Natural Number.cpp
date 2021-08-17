@@ -16,6 +16,6 @@ long long findNth(long long n)
         i++;
     }
     for (int j = i - 1; j >= 0; j--)
-        ans = ans * 9 + binaryNum[j];
+        ans = ans * 10 + binaryNum[j];
     return ans;
 }

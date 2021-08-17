@@ -52,7 +52,7 @@ int main()
 {
 	// Change n at the top to change number
 	// of elements in an array
-	vector<vector<int>> arr{{2, 6, 12, 16},
+	vector<vector<int>> arr{{2, 6, 12, 16,17,19,22},
 							{1, 9, 10, 11},
 							{23, 34, 90, 2000}};
 

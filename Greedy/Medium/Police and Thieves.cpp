@@ -1,42 +1,45 @@
+#include <bits/stdc++.h>
+using namespace std;
 
 int catchThieves(char arr[], int n, int k)
 {
-    // Code here
-    stack<int> theives_idx;
-    stack<int> police_idx;
+    vector<int> thieves, police;
 
-    for (int i = n - 1; i >= 0; i--)
+    for (int i = 0; i < n; i++)
     {
         if (arr[i] == 'T')
-            theives_idx.push(i);
+        {
+            thieves.push_back(i);
+        }
         else
-            police_idx.push(i);
+        {
+            police.push_back(i);
+        }
     }
-
-    int ans = 0;
     int count = 0;
-
-    while (!police_idx.empty() && !theives_idx.empty())
+    int i = 0, j = 0;
+    while (i < police.size() && j < thieves.size())
     {
-        int p_idx = police_idx.top();
-        int t_idx = theives_idx.top();
-
-        int diff = abs(p_idx - t_idx);
-
+        int police_idx = police[i];
+        int thieves_idx = thieves[j];
+        int diff = abs(police_idx - thieves_idx);
         if (diff > k)
         {
-            if (p_idx < t_idx)
-                police_idx.pop();
+            if (police_idx < thieves_idx)
+            {
+                i++;
+            }
             else
-                theives_idx.pop();
+            {
+                j++;
+            }
         }
-        else if (diff <= k)
+        else
         {
-            police_idx.pop();
-            theives_idx.pop();
-            ans++;
+            i++;
+            j++;
+            count++;
         }
     }
-
-    return ans;
+    return count;
 }
